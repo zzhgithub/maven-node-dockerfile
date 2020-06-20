@@ -1,0 +1,23 @@
+---
+kind: pipeline
+name: default
+
+clone:
+  disable: true
+
+steps:
+  - name: clone
+    image: alpine/git
+    commands:
+      - 'echo "192.168.0.100   gitea.docker.local" >> /etc/hosts'
+      - git clone http://gitea.docker.local/StartLink/maven-node-dockerfile.git .
+
+  - name: build
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: zzhdockerhub/mvn-node
+      tags: latest
