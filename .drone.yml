@@ -9,7 +9,7 @@ steps:
   - name: clone
     image: alpine/git
     commands:
-      - 'echo "192.168.0.100   gitea.docker.local" >> /etc/hosts'
+      - 'echo "192.168.65.2   gitea.docker.local" >> /etc/hosts'
       - git clone http://gitea.docker.local/StartLink/maven-node-dockerfile.git .
 
   - name: build
